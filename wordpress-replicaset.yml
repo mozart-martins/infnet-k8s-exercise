@@ -38,4 +38,4 @@ spec:
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
-          claimName: longhorn-pvc
+          claimName: wordpress-pvc
