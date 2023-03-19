@@ -11,4 +11,6 @@ spec:
     - name: http
       port: 80
       targetPort: 80
-  type: ClusterIP
+  type: LoadBalancer
+  externalIPs:
+    - 192.168.56.11

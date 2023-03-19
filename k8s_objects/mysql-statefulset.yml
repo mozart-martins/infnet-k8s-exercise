@@ -15,14 +15,26 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:5.7
+        image: mysql:5
         args: ["--ignore-db-dir=lost+found"]
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-secrets
-              key: root-password
+              name: secrets
+              key: password
+        - name: WORDPRESS_DB_NAME
+          value: wordpress
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: username
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: password
         ports:
         - containerPort: 3306
           name: mysql
